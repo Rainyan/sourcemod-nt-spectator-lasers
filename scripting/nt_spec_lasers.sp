@@ -176,7 +176,7 @@ bool NotHitSelf(int hitEntity, int contentsMask, int selfEntity)
 public void Event_PlayerTeam(Event event, const char[] name, bool dontBroadcast)
 {
     int client = GetClientOfUserId(event.GetInt("userid"));
-    if (client == 0) {
+    if (client == 0 || !IsClientConnected(client)) {
         return;
     }
 
