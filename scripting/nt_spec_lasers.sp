@@ -45,11 +45,11 @@ public void OnPluginStart()
 
     CreateConVar("sm_speclaser_version", PLUGIN_VERSION, "NT Spectator Lasers plugin version.", FCVAR_DONTRECORD);
 
-    g_hCvar_BeamOffset_X = CreateConVar("sm_speclaser_offset_x", "10", "Relative laser start position X offset.");
+    g_hCvar_BeamOffset_X = CreateConVar("sm_speclaser_offset_x", "16", "Relative laser start position X offset.");
     g_hCvar_BeamOffset_Y = CreateConVar("sm_speclaser_offset_y", "-4.5", "Relative laser start position Y offset.");
     g_hCvar_BeamOffset_Z = CreateConVar("sm_speclaser_offset_z", "-1", "Relative laser start position Z offset.");
 
-    g_hCvar_BeamWidth = CreateConVar("sm_speclaser_beam_width", "0.1", "Spectator laser beam width.");
+    g_hCvar_BeamWidth = CreateConVar("sm_speclaser_beam_width", "0.2", "Spectator laser beam width.");
 
     g_hCvar_BeamColor_R = CreateConVar("sm_speclaser_color_r", "33", "Spectator laser beam color, red channel. Note that this is affected by the texture base color, so it may not be the actual final RGB value.");
     g_hCvar_BeamColor_G = CreateConVar("sm_speclaser_color_g", "66", "Spectator laser beam color, green channel. Note that this is affected by the texture base color, so it may not be the actual final RGB value.");
