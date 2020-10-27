@@ -182,7 +182,7 @@ public void Event_PlayerTeam(Event event, const char[] name, bool dontBroadcast)
 
     if (!event.GetBool("disconnect")) {
         int team = event.GetInt("team");
-        _is_spectating[client] = (team == NEO_TEAM_SPECTATOR);
+        _is_spectating[client] = ((!IsFakeClient(client)) && (team == NEO_TEAM_SPECTATOR));
         // Could also be unassigned team, which is < TEAM_SPECTATOR.
         // Both Jinrai and NSF are > TEAM_SPECTATOR.
         _is_playing[client] = (team > NEO_TEAM_SPECTATOR);
