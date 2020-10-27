@@ -8,6 +8,6 @@ SourceMod plugin for Neotokyo: Draw laser lines for spectators to visualize whic
 - SourceMod [Neotokyo include](https://github.com/softashell/sourcemod-nt-include)
 
 ## ConVars
-- *sm_speclaser_offset_x/y/z* - Relative laser start position offset from the center of a player's head.
+- *sm_speclaser_offset_x/y/z* - Relative laser start position offset from the center of player's eye position.
 - *sm_speclaser_beam_width* - Width of the laser.
 - *sm_speclaser_color_r/g/b/a* - RGBA color of the laser. The color is also affected by the used texture, so it's not a pure RGBA color.
