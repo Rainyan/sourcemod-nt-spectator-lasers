@@ -235,11 +235,7 @@ void GetSinCos(float value, float& sine, float& cosine)
         index -= 360;
     }
 
-    if (value < 0) {
-        sine = -_sin_lookup_table[index];
-    } else {
-        sine = _sin_lookup_table[index];
-    }
+    sine = value < 0 ? -_sin_lookup_table[index] : _sin_lookup_table[index];
     cosine = _cos_lookup_table[index];
 
 #if(0)
@@ -349,7 +345,7 @@ void RemovePlayerFromArray(int[] array, int& num_elements, const int player)
                 array[j - 1] = array[j]; // move each superseding element back
             }
             // clear the trailing copy of the final moved element
-            array[num_elements--] = 0;
+            array[--num_elements] = 0;
             return;
         }
     }
