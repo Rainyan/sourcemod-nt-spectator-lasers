@@ -10,7 +10,7 @@
 #include <sdktools>
 #include <neotokyo>
 
-#define PLUGIN_VERSION "0.2"
+#define PLUGIN_VERSION "0.3"
 
 // The laser texture to use.
 #define BEAM_ASSET "materials/sprites/purplelaser1.vmt"
@@ -91,6 +91,8 @@ public void OnPluginStart()
     _sin_lookup_table[NUM_LOOKUP_ENTRIES / 2] = 0.0;
 #endif
 
+    HookEvent("player_death", Event_PlayerDeath);
+    HookEvent("player_spawn", Event_PlayerSpawn);
     HookEvent("player_team", Event_PlayerTeam);
 
     for (int client = 1; client <= MaxClients; ++client) {
@@ -146,6 +148,24 @@ public void OnClientDisconnect(int client)
 {
     RemovePlayerFromArray(players, num_playing, client);
     RemovePlayerFromArray(spectators, num_spectating, client);
+}
+
+public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast)
+{
+    int victim = GetClientOfUserId(event.GetInt("userid"));
+    if (victim != 0) {
+        RemovePlayerFromArray(players, num_playing, victim);
+        RemovePlayerFromArray(spectators, num_spectating, victim);
+    }
+}
+
+public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast)
+{
+    int client = GetClientOfUserId(event.GetInt("userid"));
+    if (client != 0) {
+        AddPlayerToArray(players, num_playing, client);
+        RemovePlayerFromArray(spectators, num_spectating, client);
+    }
 }
 
 public void Event_PlayerTeam(Event event, const char[] name, bool dontBroadcast)
