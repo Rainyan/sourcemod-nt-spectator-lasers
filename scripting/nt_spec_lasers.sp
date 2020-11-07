@@ -162,7 +162,7 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
 public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast)
 {
     int client = GetClientOfUserId(event.GetInt("userid"));
-    if (client != 0) {
+    if (client != 0 && GetClientTeam(client) > NEO_TEAM_SPECTATOR) {
         AddPlayerToArray(players, num_playing, client);
         RemovePlayerFromArray(spectators, num_spectating, client);
     }
